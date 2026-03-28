@@ -71,7 +71,7 @@
 - `cursors.lisp` - Interfaz de iteradores
 
 **Documentación:** 
-[SINCRONIZACION](./0es02-LAYER2-MEMORY-SYNCHRONIZATION.md)
+[SINCRONIZACION](./es02-LAYER2-MEMORY-SYNCHRONIZATION.md)
 
 **Responsabilidades:**
 - Cons cells persistentes (pcons)
