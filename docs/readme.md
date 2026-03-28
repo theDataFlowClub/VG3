@@ -42,7 +42,7 @@
 - `node-class.lisp` - Node metaclass
 
 **Documentation:** 
-[INFRASTRUCTURE](./es01-LAYER1-INFRA.md)
+[INFRASTRUCTURE](./en01-LAYER1-INFRA.md)
 
 **Responsibilities:**
 - Define package and exports
@@ -65,7 +65,7 @@
 - `cursors.lisp` - Iterator interface
 
 **Documentation:** 
-[SYNCHRONIZATION](./es02-LAYER2-MEMORY-SYNCHRONIZATION.md)
+[SYNCHRONIZATION](./en02-LAYER2-MEMORY-SYNCHRONIZATION.md)
 
 **Responsibilities:**
 - Persistent cons cells (pcons)
@@ -90,7 +90,7 @@
 - `gc.lisp` - Mark-and-sweep garbage collection
 
 **Documentation:** 
-[PERSISTENCE & TRANSACTIONS](./es03-LAYER3-PERSISTENCY-TRANSACTION.md)
+[PERSISTENCE & TRANSACTIONS](./en03-LAYER3-PERSISTENCY-TRANSACTION.md)
 
 **Responsibilities:**
 - ACID transactions with optimistic locking
@@ -115,7 +115,7 @@
 - `index-vector.lisp` - Dynamic vectors
 
 **Documentation:** 
-[DATA STRUCTURES](./es04-LAYER4-DATA-STRUCTURES.md)
+[DATA STRUCTURES](./en04-LAYER4-DATA-STRUCTURES.md)
 
 **Responsibilities:**
 - Skip lists for O(log n) search
@@ -136,7 +136,7 @@
 - `prologc.lisp` - Full Prolog engine
 
 **Documentation:** 
-[INDEXING](./es05-LAYER5-INDEXING.md)
+[INDEXING](./en05-LAYER5-INDEXING.md)
 
 **Responsibilities:**
 - Specialized indexes for fast search
@@ -156,7 +156,7 @@
 - `schema.lisp` - Dynamic type system
 
 **Documentation:** 
-[DATA MODEL](./es06-LAYER6-DATA-MODEL.md)
+[DATA MODEL](./en06-LAYER6-DATA-MODEL.md)
 
 **Responsibilities:**
 - Primitive node with flags and serialization
@@ -174,7 +174,7 @@
 - `rest.lisp` - HTTP REST server
 
 **Documentation:** 
-[USER API](./es07-LAYER-USER-API.md)
+[USER API](./en07-LAYER-USER-API.md)
 
 **Responsibilities:**
 - copy, save, mark-deleted generics
@@ -221,7 +221,7 @@ VIVACEGRAPH - 7 LAYERS
 
 ### ACID Transactions
 - **File:** `transactions.lisp` (Layer 3)
-- **Documentation:** [PERSISTENCE & TRANSACTIONS](./es03-LAYER3-PERSISTENCY-TRANSACTION.md)
+- **Documentation:** [PERSISTENCE & TRANSACTIONS](./en03-LAYER3-PERSISTENCY-TRANSACTION.md)
 - **Key concepts:**
   - Optimistic locking with read-set/write-set
   - Serialization isolation
@@ -231,7 +231,7 @@ VIVACEGRAPH - 7 LAYERS
 
 ### Indexes and Search
 - **Files:** `skip-list.lisp`, `ve-index.lisp`, `vev-index.lisp`, `type-index.lisp` (Layers 4-5)
-- **Documentation:** [DATA STRUCTURES](./es04-LAYER4-DATA-STRUCTURES.md), [INDEXING](./es05-LAYER5-INDEXING.md)
+- **Documentation:** [DATA STRUCTURES](./en04-LAYER4-DATA-STRUCTURES.md), [INDEXING](./en05-LAYER5-INDEXING.md)
 - **Complexities:**
   - Skip-list search: O(log n)
   - VE-index: O(log n)
@@ -240,7 +240,7 @@ VIVACEGRAPH - 7 LAYERS
 
 ### Logic Programming (Prolog)
 - **Files:** `prologc.lisp`, `functor.lisp` (Layer 5)
-- **Documentation:** [INDEXING](./es05-LAYER5-INDEXING.md)
+- **Documentation:** [INDEXING](./en05-LAYER5-INDEXING.md)
 - **Features:**
   - Unification with variables
   - Backtracking with trail
@@ -249,18 +249,18 @@ VIVACEGRAPH - 7 LAYERS
 
 ### Type System
 - **Files:** `schema.lisp`, `node-class.lisp` (Layer 6, Layer 1)
-- **Documentation:** [PERSISTENCE & TRANSACTIONS](./es03-LAYER3-PERSISTENCY-TRANSACTION.md)
+- **Documentation:** [PERSISTENCE & TRANSACTIONS](./en03-LAYER3-PERSISTENCY-TRANSACTION.md)
 - **Macros:** `def-vertex`, `def-edge`
 - **Extensibility:** Runtime, no recompilation needed
 
 ### Master-Slave Replication
 - **Files:** `transaction-streaming.lisp`, `replication.lisp` (Layer 3)
-- **Documentation:** [PERSISTENCE & TRANSACTIONS](./es03-LAYER3-PERSISTENCY-TRANSACTION.md)
+- **Documentation:** [PERSISTENCE & TRANSACTIONS](./en03-LAYER3-PERSISTENCY-TRANSACTION.md)
 - **Protocol:** Binary packets, authentication, compression
 
 ### REST API
 - **File:** `rest.lisp` (Layer 7)
-- **Documentation:** [USER API](./es07-LAYER-USER-API.md)
+- **Documentation:** [USER API](./en07-LAYER-USER-API.md)
 - **Endpoints:** Full CRUD, JSON encoding, authentication
 
 
@@ -322,20 +322,20 @@ Transaction commit      O(n)         O(log n)     O(n)
 ### By Specific Interest
 
 **If you want to understand ACID:**
-- Read [PERSISTENCE & TRANSACTIONS](./es03-LAYER3-PERSISTENCY-TRANSACTION.md)
-- Then [SYNCHRONIZATION](./es02-LAYER2-MEMORY-SYNCHRONIZATION.md) for locks
+- Read [PERSISTENCE & TRANSACTIONS](./en03-LAYER3-PERSISTENCY-TRANSACTION.md)
+- Then [SYNCHRONIZATION](./en02-LAYER2-MEMORY-SYNCHRONIZATION.md) for locks
 
 **If you want to understand Prolog:**
-- Read [Layer 5](./es05-LAYER5-INDEXING.md)
+- Read [Layer 5](./en05-LAYER5-INDEXING.md)
 - Specifically the "Prolog Engine" section
 
 **If you want to use the system:**
-- Read [Layer 7](./es07-LAYER-USER-API.md)
-- Then [Layer 6](./es06-LAYER6-DATA-MODEL.md) for types
+- Read [Layer 7](./en07-LAYER-USER-API.md)
+- Then [Layer 6](./en06-LAYER6-DATA-MODEL.md) for types
 
 **If you want to understand performance:**
-- Read [Layer 4](./es04-LAYER4-DATA-STRUCTURES.md) for data structures
-- Then [Layer 5](./es05-LAYER5-INDEXING.md) for indexes
+- Read [Layer 4](./en04-LAYER4-DATA-STRUCTURES.md) for data structures
+- Then [Layer 5](./en05-LAYER5-INDEXING.md) for indexes
 
 
 ## Cross-References
@@ -374,27 +374,27 @@ Transaction commit      O(n)         O(log n)     O(n)
 ### Skip Lists
 Probabilistic structure providing O(log n) search without rebalancing.
 Used for: Ordered indexes, query results.
-**Read:** [Layer 4 - Skip Lists](./es04-LAYER4-DATA-STRUCTURES.md)
+**Read:** [Layer 4 - Skip Lists](./en04-LAYER4-DATA-STRUCTURES.md)
 
 ### Linear Hashing
 Hash table that grows incrementally without full rehashing.
 Used for: Vertex/edge tables.
-**Read:** [Layer 4 - Linear Hashing](./es04-LAYER4-DATA-STRUCTURES.md)
+**Read:** [Layer 4 - Linear Hashing](./en04-LAYER4-DATA-STRUCTURES.md)
 
 ### MVCC (Multi-Version Concurrency Control)
 Each node has a revision; multiple readers see a consistent version.
 Used for: Transaction isolation.
-**Read:** [Layer 3 - ACID](./es03-LAYER3-PERSISTENCY-TRANSACTION.md)
+**Read:** [Layer 3 - ACID](./en03-LAYER3-PERSISTENCY-TRANSACTION.md)
 
 ### Prolog Logic Programming
 Declarative language with unification and backtracking.
 Used for: Complex graph queries.
-**Read:** [INDEXING](./es05-LAYER5-INDEXING.md)
+**Read:** [INDEXING](./en05-LAYER5-INDEXING.md)
 
 ### Materialized Views
 Automatically updated query caches.
 Used for: Optimizing frequent queries.
-**Read:** [INDEXING](./es05-LAYER5-INDEXING.md)
+**Read:** [INDEXING](./en05-LAYER5-INDEXING.md)
 
 ## Implementation Notes
 
