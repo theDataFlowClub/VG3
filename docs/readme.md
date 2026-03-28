@@ -1,5 +1,12 @@
 # VivaceGraph
 
+
+[español](esReadme.md) | [english](readme.md)
+
+<br><br>
+
+
+
 ## Documentation
 
 **VivaceGraph** is an ACID graph database written **100% in pure Common Lisp**, with no external system dependencies (except standard Lisp libraries). It implements:
