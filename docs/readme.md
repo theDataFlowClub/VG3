@@ -21,7 +21,7 @@
 
 ### General Architecture
 
-1. **[Architecture](./esArchitecture.md)**
+1. **[Architecture](./enArchitecture.md)**
    - Overview of the 7-layer system
    - Load order and dependencies
    - Initialization flow
