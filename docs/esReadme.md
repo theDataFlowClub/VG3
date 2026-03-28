@@ -1,5 +1,11 @@
 # VivaceGraph
 
+
+[español](esReadme.md) | [english](readme.md)
+
+<br><br>
+
+
 ## Documentación
 
 **VivaceGraph** es una base de datos de grafos ACID escrita **100% en Common Lisp puro**, sin dependencias de sistemas externos (excepto librerías Lisp estándar). Implementa:
