@@ -21,7 +21,7 @@
 
 ### Arquitectura General
 
-1. **[VIVACEGRAPH_ARQUITECTURA_MODULAR.md](./VIVACEGRAPH_ARQUITECTURA_MODULAR.md)**
+1. **[Arquitectura](./esArchitecture.md)**
    - Visión general del sistema de 7 capas
    - Orden de carga y dependencias
    - Flujo de inicialización
@@ -42,7 +42,7 @@
 - `node-class.lisp` - Metaclase para nodos
 
 **Documentación:** 
-[01-CAPA1-INFRAESTRUCTURA.md](./01-CAPA1-INFRAESTRUCTURA.md)
+[INFRAESTRUCTURA](./es01-LAYER1-INFRA.md)
 
 **Responsabilidades:**
 - Definir paquete y exportaciones
@@ -65,7 +65,7 @@
 - `cursors.lisp` - Interfaz de iteradores
 
 **Documentación:** 
-[02-CAPA2-MEMORIA-SINCRONIZACION.md](./02-CAPA2-MEMORIA-SINCRONIZACION.md)
+[SINCRONIZACION](./0es02-LAYER2-MEMORY-SYNCHRONIZATION.md)
 
 **Responsabilidades:**
 - Cons cells persistentes (pcons)
@@ -90,7 +90,7 @@
 - `gc.lisp` - Mark-and-sweep garbage collection
 
 **Documentación:** 
-[03-CAPA3-PERSISTENCIA-TRANSACCIONES.md](./03-CAPA3-PERSISTENCIA-TRANSACCIONES.md)
+[PERSISTENCIA Y TRANSACCIONES](./es03-LAYER3-PERSISTENCY-TRANSACTION.md)
 
 **Responsabilidades:**
 - ACID transactions con optimistic locking
@@ -115,7 +115,7 @@
 - `index-vector.lisp` - Vectores dinámicos
 
 **Documentación:** 
-[04-CAPA4-ESTRUCTURAS-DATOS.md](./04-CAPA4-ESTRUCTURAS-DATOS.md)
+[ESTRUCTURAS DE DATOS](./es04-LAYER4-DATA-STRUCTURES.md)
 
 **Responsabilidades:**
 - Skip lists para búsqueda O(log n)
@@ -136,7 +136,7 @@
 - `prologc.lisp` - Motor Prolog completo
 
 **Documentación:** 
-[spanish](./05-CAPA5-INDEXACION.md)
+[INDEXACIÓN](./es05-LAYER5-INDEXING.md)
 
 **Responsabilidades:**
 - Índices especializados para búsqueda rápida
@@ -155,7 +155,8 @@
 - `edge.lisp` - Aristas dirigidas
 - `schema.lisp` - Sistema dinámico de tipos
 
-**Documentación:** [06-CAPA6-MODELO-DATOS.md](./06-CAPA6-MODELO-DATOS.md)
+**Documentación:** 
+[MODELO DE DATOS](./es06-LAYER6-DATA-MODEL.md)
 
 **Responsabilidades:**
 - Node primitivo con flags y serialización
@@ -172,7 +173,8 @@
 - `traverse.lisp` - Traversal BFS
 - `rest.lisp` - Servidor HTTP REST
 
-**Documentación:** [07-CAPA7-API-USUARIO.md](./07-CAPA7-API-USUARIO.md)
+**Documentación:** 
+[API DE USUARIO](./es07-LAYER-USER-API.md)
 
 **Responsabilidades:**
 - Genéricos copy, save, mark-deleted
@@ -219,7 +221,7 @@ VIVACEGRAPH - 7 CAPAS
 
 ### Transacciones ACID
 - **Archivo:** `transactions.lisp` (Capa 3)
-- **Documentación:** [Capa 3](./03-CAPA3-PERSISTENCIA-TRANSACCIONES.md)
+- **Documentación:** [PERSISTENCIA & TRANSACCIONES](./es03-LAYER3-PERSISTENCY-TRANSACTION.md)
 - **Conceptos clave:**
   - Optimistic locking con read-set/write-set
   - Serialization isolation
@@ -229,7 +231,7 @@ VIVACEGRAPH - 7 CAPAS
 
 ### Índices y Búsqueda
 - **Archivos:** `skip-list.lisp`, `ve-index.lisp`, `vev-index.lisp`, `type-index.lisp` (Capas 4-5)
-- **Documentación:** [Capa 4](./04-CAPA4-ESTRUCTURAS-DATOS.md), [Capa 5](./05-CAPA5-INDEXACION.md)
+- **Documentación:** [ESTRUCTURAS DE DATOS](./es04-LAYER4-DATA-STRUCTURES.md), [INDEXACIÓN](./es05-LAYER5-INDEXING.md)
 - **Complejidades:**
   - Skip-list búsqueda: O(log n)
   - VE-index: O(log n)
@@ -238,7 +240,7 @@ VIVACEGRAPH - 7 CAPAS
 
 ### Logic Programming (Prolog)
 - **Archivo:** `prologc.lisp`, `functor.lisp` (Capa 5)
-- **Documentación:** [Capa 5](./05-CAPA5-INDEXACION.md)
+- **Documentación:** [INDEXACIÓN](./es05-LAYER5-INDEXING.md)
 - **Características:**
   - Unificación con variables
   - Backtracking con trail
@@ -247,18 +249,18 @@ VIVACEGRAPH - 7 CAPAS
 
 ### Sistema de Tipos
 - **Archivos:** `schema.lisp`, `node-class.lisp` (Capa 6, Capa 1)
-- **Documentación:** [Capa 6](./06-CAPA6-MODELO-DATOS.md)
+- **Documentación:** [PERSISTENCIA & TRANSACCIONES](./es03-LAYER3-PERSISTENCY-TRANSACTION.md)
 - **Macros:** `def-vertex`, `def-edge`
 - **Extensibilidad:** Runtime, sin recompilación
 
 ### Replicación Master-Slave
 - **Archivos:** `transaction-streaming.lisp`, `replication.lisp` (Capa 3)
-- **Documentación:** [Capa 3](./03-CAPA3-PERSISTENCIA-TRANSACCIONES.md)
+- **Documentación:** [PERSISTENCIA & TRANSACCIONES](./es03-LAYER3-PERSISTENCY-TRANSACTION.md)
 - **Protocolo:** Paquetes binarios, autenticación, compresión
 
 ### REST API
 - **Archivo:** `rest.lisp` (Capa 7)
-- **Documentación:** [Capa 7](./07-CAPA7-API-USUARIO.md)
+- **Documentación:** [API DE USUARIO](./es07-LAYER-USER-API.md)
 - **Endpoints:** CRUD completo, JSON encoding, autenticación
 
 
@@ -311,7 +313,7 @@ Transacción commit      O(n)         O(log n)     O(n)
 
 ### Leer en este Orden
 
-1. **Primero:** Lee [Arquitectura Modular](./VIVACEGRAPH_ARQUITECTURA_MODULAR.md) para visión general
+1. **Primero:** Lee [Arquitectura](./esArchitecture.md) para visión general
 2. **Luego:** Capa 1-3 para entender infraestructura base
 3. **Después:** Capa 4 para estructuras de datos eficientes
 4. **Entonces:** Capa 5-6 para modelo de grafo
@@ -320,8 +322,8 @@ Transacción commit      O(n)         O(log n)     O(n)
 ### Por Interés Específico
 
 **Si quieres entender ACID:**
-- Lee [Capa 3](./03-CAPA3-PERSISTENCIA-TRANSACCIONES.md)
-- Luego [Capa 2](./02-CAPA2-MEMORIA-SINCRONIZACION.md) para locks
+- Lee [PERSISTENCIA & TRANSACCIONES](./es03-LAYER3-PERSISTENCY-TRANSACTION.md)
+- Luego [SINCRONIZACION](./0es02-LAYER2-MEMORY-SYNCHRONIZATION.md) para locks
 
 **Si quieres entender Prolog:**
 - Lee [Capa 5](./05-CAPA5-INDEXACION.md)
@@ -387,12 +389,12 @@ Usada para: Aislamiento de transacciones.
 ### Prolog Logic Programming
 Lenguaje declarativo con unificación y backtracking.
 Usada para: Queries complejas sobre grafos.
-**Leer:** [Capa 5 - Prolog](./05-CAPA5-INDEXACION.md)
+**Leer:** [INDEXACIÓN](./es05-LAYER5-INDEXING.md)
 
 ### Vistas Materializadas
 Cachés de queries que se actualizan automáticamente.
 Usada para: Optimizar queries frecuentes.
-**Leer:** [Capa 5 - Vistas](./05-CAPA5-INDEXACION.md)
+**Leer:** [INDEXACIÓN](./es05-LAYER5-INDEXING.md)
 
 ## 📝 Notas de Implementación
 
@@ -423,20 +425,6 @@ VivaceGraph depende SOLO de librerías Lisp estándar:
 6. **Índices Especializados** - VE, VEV, Type indexes para grafos
 7. **Replicación Master-Slave** - Protocolo binario, recuperación
 8. **REST en Lisp** - Ningle/Clack stack
-
-## 📑 Índice de Archivos
-
-```
-VIVACEGRAPH_ARQUITECTURA_MODULAR.md
-01-CAPA1-INFRAESTRUCTURA.md
-02-CAPA2-MEMORIA-SINCRONIZACION.md
-03-CAPA3-PERSISTENCIA-TRANSACCIONES.md
-04-CAPA4-ESTRUCTURAS-DATOS.md
-05-CAPA5-INDEXACION.md
-06-CAPA6-MODELO-DATOS.md
-07-CAPA7-API-USUARIO.md
-00-README-TABLA-CONTENIDOS.md (este archivo)
-```
 
 
 **Última actualización:** Marzo 2026  
