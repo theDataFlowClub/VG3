@@ -5,8 +5,6 @@
 **Priority:** HIGH — Everything in VivaceGraph depends on this  
 **Status:** Phase 1 (documentation), Phase 2 (tests pending)
 
----
-
 ## Purpose
 
 `utilities.lisp` is the **foundation of Layer 1**. It provides:
@@ -19,8 +17,6 @@
 6. **Type checking & array creation** — proper-listp, make-byte-vector
 
 **Without utilities.lisp, nothing else runs.** Every layer depends on at least one function here.
-
----
 
 ## Key Concepts
 
@@ -53,8 +49,6 @@ These generics define a **total order on all Lisp types**, enabling mixed-type i
 - `vev-index.lisp` (index lookups)
 - Any generic index by type or value
 
----
-
 ### 2. **UUID Generation & Parsing**
 
 VivaceGraph uses **16-byte unsigned-byte vectors** as the canonical UUID representation (fast, persistent, binary-friendly).
@@ -86,8 +80,6 @@ VivaceGraph uses **16-byte unsigned-byte vectors** as the canonical UUID represe
 - Bytes 8-9: clock-seq (chars 17-20)
 - Bytes 10-15: node/MAC (chars 21-32)
 
----
-
 ### 3. **Time Primitives (Cross-Platform)**
 
 VivaceGraph must work on **SBCL, CCL, LispWorks**, and each has different time APIs.
@@ -108,8 +100,6 @@ VivaceGraph must work on **SBCL, CCL, LispWorks**, and each has different time A
 ```lisp
 *unix-epoch-difference* = 2208988800  ; Pre-computed, never changes
 ```
-
----
 
 ### 4. **Synchronization Primitives (Cross-Platform)**
 
@@ -143,8 +133,6 @@ VivaceGraph uses locks for concurrent access. Implementations vary by Lisp.
 
 **Critical:** The `with-lock` macro is used everywhere in Layer 3 (transactions) and Layer 4 (data structures). Must be reliable across all platforms.
 
----
-
 ### 5. **List & Tree Utilities**
 
 Common operations for searching and manipulating nested structures.
@@ -162,8 +150,6 @@ Common operations for searching and manipulating nested structures.
 
 **Note:** These are all from Norvig's PAIP (Paradigms of AI Programming). VivaceGraph inherits them for Prolog compilation and term rewriting.
 
----
-
 ### 6. **Array & Memory Utilities**
 
 | Function | Purpose | Example |
@@ -179,8 +165,6 @@ Common operations for searching and manipulating nested structures.
 
 Used in Layer 3 (garbage collection) to decide when to trigger cleanup.
 
----
-
 ### 7. **Macro Utilities**
 
 | Macro | Purpose | Example |
@@ -189,8 +173,6 @@ Used in Layer 3 (garbage collection) to decide when to trigger cleanup.
 
 Used in macro writing to avoid variable capture. Standard Lisp pattern from Graham's *On Lisp*.
 
----
-
 ### 8. **Debugging Utilities**
 
 | Function | Purpose |
@@ -198,8 +180,6 @@ Used in macro writing to avoid variable capture. Standard Lisp pattern from Grah
 | `dbg(fmt &rest args)` | Printf-style debug output |
 | `dump-hash(table)` | Pretty-print hash table contents |
 | `ignore-warning(condition)` | Suppress compiler warnings |
-
----
 
 ## Dependencies
 
@@ -224,8 +204,6 @@ Used in macro writing to avoid variable capture. Standard Lisp pattern from Grah
   - `fli:with-dynamic-foreign-objects`, `fli:foreign-slot-value`, `fli:*null-pointer*`
   - `mp:with-lock`, `mp:make-semaphore`
 
----
-
 ## Who Depends on This?
 
 **Every file in VivaceGraph uses at least one function from utilities.lisp:**
@@ -240,8 +218,6 @@ Used in macro writing to avoid variable capture. Standard Lisp pattern from Grah
 - **serialize.lisp** → `make-byte-vector`, `new-interned-symbol`
 - **prologc.lisp** → `find-all`, `unique-find-anywhere-if`, `flatten`
 - **rest.lisp** → `dbg`, `gen-id`
-
----
 
 ## Suggested Improvements / Issues
 
@@ -282,8 +258,6 @@ Used in macro writing to avoid variable capture. Standard Lisp pattern from Grah
 - **with-locked-hash-table**, **with-read-lock**, **with-write-lock** are no-ops on some platforms
 - **Solution:** Add compiler warnings or docstrings warning about limited platform support
 
----
-
 ## Testing Strategy (Phase 2, Layer 1)
 
 See `tests/layer1/test-utilities.lisp` for comprehensive tests covering:
@@ -315,8 +289,6 @@ See `tests/layer1/test-utilities.lisp` for comprehensive tests covering:
 6. **List utilities**
    - flatten, find-anywhere, find-all (correctness, no side effects)
 
----
-
 ## Code Quality Summary
 
 | Aspect | Status | Notes |
@@ -329,16 +301,12 @@ See `tests/layer1/test-utilities.lisp` for comprehensive tests covering:
 | Performance | ✅ Good | Most functions O(1) or O(n); key-vector< could be optimized |
 | Dependencies | ✅ Good | uuid, timestamp libraries are stable Quicklisp packages |
 
----
-
 ## Files in This Delivery
 
 - **utilities-ANNOTATED.lisp** — Source with docstrings and inline comments
 - **layer1-utilities-guide.md** — This file (human-readable summary)
 - **test-utilities.lisp** — Comprehensive test suite (Phase 2)
 - **diagrams/layer1/dependencies.md** — Dependency graph including utilities.lisp
-
----
 
 ## Next Steps
 
